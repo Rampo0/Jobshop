@@ -14,7 +14,7 @@ return new \Phalcon\Config([
         'host'     => 'localhost',
         'username' => 'root',
         'password' => '',
-        'dbname'   => 'fiverr',
+        'dbname'   => 'jobshop',
         'charset'  => 'utf8',
     ],
 

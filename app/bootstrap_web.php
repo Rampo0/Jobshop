@@ -46,6 +46,10 @@ try {
      */
     $application->registerModules([
         'frontend' => ['className' => 'Fiverr\Modules\Frontend\Module'],
+        'user' => ['className' => 'Fiverr\Modules\User\Module'],
+        'comment' => ['className' => 'Fiverr\Modules\Comment\Module'],
+        'order' => ['className' => 'Fiverr\Modules\Order\Module'],
+        'post' => ['className' => 'Fiverr\Modules\Post\Module'],
     ]);
 
     /**
