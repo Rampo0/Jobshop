@@ -6,5 +6,9 @@
             "email": "36811859+Rampo0@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "phalcon/devtools": "~4.0"
+    }
+    
 }
