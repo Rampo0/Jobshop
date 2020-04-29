@@ -8,6 +8,9 @@ use Phalcon\Loader;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Php as PhpEngine;
 use Phalcon\Mvc\ModuleDefinitionInterface;
+use Fiverr\Modules\User\Services\RegisterService;
+use Fiverr\Modules\User\Services\LoginService;
+use Fiverr\Modules\User\InMemory\UserRepository;
 
 class Module implements ModuleDefinitionInterface
 {
@@ -54,5 +57,14 @@ class Module implements ModuleDefinitionInterface
 
             return $view;
         });
+
+        $di->setShared('registerService', function(){
+            return new RegisterService(new UserRepository);
+        });
+
+        $di->setShared('loginService', function(){
+            return new LoginService(new UserRepository);
+        });
+
     }
 }
