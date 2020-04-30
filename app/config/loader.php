@@ -8,7 +8,7 @@ $loader = new Loader();
  * Register Namespaces
  */
 $loader->registerNamespaces([
-    'Fiverr\Models' => APP_PATH . '/common/models/',
+    'Fiverr\Events' => APP_PATH . '/common/events/',
     'Fiverr'        => APP_PATH . '/common/library/',
 ]);
 

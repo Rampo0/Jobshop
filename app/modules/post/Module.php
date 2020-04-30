@@ -25,6 +25,9 @@ class Module implements ModuleDefinitionInterface
         $loader->registerNamespaces([
             'Fiverr\Modules\Post\Controllers' => __DIR__ . '/presentation/controllers/',
             'Fiverr\Modules\Post\Models' => __DIR__ . '/application/domain/models/',
+            'Fiverr\Modules\Post\Exceptions' => __DIR__ . '/application/domain/exceptions/',
+            'Fiverr\Modules\Post\Requests' => __DIR__ . '/application/domain/Requests/',
+            'Fiverr\Modules\Post\Responses' => __DIR__ . '/application/domain/Responses/',
             'Fiverr\Modules\Post\Forms' => __DIR__ . '/application/domain/forms/',
             'Fiverr\Modules\Post\Repository' => __DIR__ . '/application/domain/repository/',
             'Fiverr\Modules\Post\Services' => __DIR__ . '/application/services/',
@@ -57,9 +60,17 @@ class Module implements ModuleDefinitionInterface
             return $view;
         });
 
+
+        // register service here
+
         $di->setShared('createPostService', function(){
             return new CreatePostService(new PostRepository);
         });
+
+        // register events here
+
+        // ex
+        // DomainEventPublisher::instance()->subscribe(new SendRatingNotificationService($di->get('swiftMailer')));
 
     }
 }
