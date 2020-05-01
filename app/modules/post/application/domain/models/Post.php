@@ -28,7 +28,7 @@ class Post{
     public function averageRating(){
         $total = 0;
         foreach ($this->rating as $rate) {
-            $total+=$rate;
+            $total+=$rate->rating;
         }
         
         if(count($this->rating) > 0){

@@ -11,6 +11,7 @@ foreach ($posts as $post) {
     $tokenValue = $this->security->getToken();
     $post_desc = $post->description();
     $post_rate = $post->averageRating();
+    $post_id = $post->id()->id();
 
     echo "$post_desc <br> $post_rate <br>
     
@@ -29,6 +30,9 @@ foreach ($posts as $post) {
 
         <input type='hidden' name='$tokenName'
         value='$tokenValue'/>
+
+        <input type='hidden' name='post_id'
+        value='$post_id'/>
 
         <button type='submit'>submit</button>
     </form> 

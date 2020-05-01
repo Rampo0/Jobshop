@@ -8,7 +8,11 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
+        $sessions = $this->getDI()->getShared("session");
 
+        if (!$sessions->has("user_id")) {
+            return $this->response->redirect("/user");
+        }
     }
 
 }
