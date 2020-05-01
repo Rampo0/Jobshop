@@ -4,10 +4,10 @@
 
 <a href="/user/index/logout">Logout</a>
 
-<form action="/post/index/create" method="post">
+<form action="/post/index/create" method="post" enctype="multipart/form-data">
 
     <input type="text" name="description" placeholder="description">
-    <input type="text" name="file" placeholder="file">
+    <input type="file" name="file" placeholder="file">
 
     <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
         value='<?php echo $this->security->getToken() ?>'/>

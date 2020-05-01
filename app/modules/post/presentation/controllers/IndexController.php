@@ -36,12 +36,20 @@ class IndexController extends ControllerBase
         if(!$this->security->checkToken()){
             echo "invalid csrf !!";
         }
+
+        $file_name = "";
+        if ($this->request->hasFiles() == true) {
+            foreach ($this->request->getUploadedFiles() as $file) {
+                $file->moveTo('files/' . $file->getName());
+                $file_name = $file->getName();   
+            }
+        }
        
         try{
 
             $this->createPostService->execute(
                 $this->request->getPost('description'),
-                $this->request->getPost('file')
+                $file_name
             );
     
         }catch (\Exception $e){
