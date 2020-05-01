@@ -9,6 +9,7 @@ use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Php as PhpEngine;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 use Fiverr\Modules\Post\Services\CreatePostService;
+use Fiverr\Modules\Post\Services\GetAllPostService;
 use Fiverr\Modules\Post\InMemory\PostRepository;
 
 class Module implements ModuleDefinitionInterface
@@ -65,6 +66,10 @@ class Module implements ModuleDefinitionInterface
 
         $di->setShared('createPostService', function(){
             return new CreatePostService(new PostRepository);
+        });
+
+        $di->setShared('getAllPostService', function(){
+            return new GetAllPostService(new PostRepository);
         });
 
         // register events here

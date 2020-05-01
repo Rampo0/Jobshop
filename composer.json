@@ -6,7 +6,9 @@
             "email": "36811859+Rampo0@users.noreply.github.com"
         }
     ],
-    "require": {},
+    "require": {
+        "ramsey/uuid": "^4.0"
+    },
     "require-dev": {
         "phalcon/devtools": "~4.0"
     }

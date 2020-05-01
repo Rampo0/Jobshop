@@ -7,7 +7,6 @@ class Posts extends Model{
     public $id;
     public $description;
     public $file;
-    public $rating;
 }
 
 ?>

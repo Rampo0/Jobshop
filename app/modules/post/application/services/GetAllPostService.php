@@ -4,9 +4,11 @@
 namespace Fiverr\Modules\Post\Services;
 
 use Fiverr\Modules\Post\Models\Post;
+use Fiverr\Modules\Post\Models\PostMapper;
 use Fiverr\Modules\Post\InMemory\PostRepository;
 
-class CreatePostService{
+
+class GetAllPostService{
 
     private $repository;
 
@@ -14,14 +16,17 @@ class CreatePostService{
         $this->repository = $repository;
     }
 
-    public function execute($description ,$file){
+    public function execute(){
         try{
-            $newPost = Post::createPost($description , $file);
-            $this->repository->create($newPost);
+            $posts = $this->repository->findPosts();
+            $ratings = $this->repository->findRatings();
+            $post_mapper = new PostMapper($posts, $ratings);
+            $all_posts = $post_mapper->get();
+            return $all_posts;
         }catch (\Exception $exception){
             throw new \Exception();
         }
-        
+        return null;
     }
 
 }
