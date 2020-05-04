@@ -44,12 +44,15 @@ class IndexController extends ControllerBase
                 $file_name = $file->getName();   
             }
         }
+
+        $user_id = $this->getDI()->getShared("session")->get('user_id');
        
         try{
 
             $this->createPostService->execute(
                 $this->request->getPost('description'),
-                $file_name
+                $file_name,
+                $user_id
             );
     
         }catch (\Exception $e){
@@ -57,6 +60,17 @@ class IndexController extends ControllerBase
         }
 
         return $this->response->redirect('/post');
+    }
+
+    public function detailAction($post_id){
+        $post = Posts::find([
+            'conditions' => 'id = :post_id:',
+            'bind'       => [
+                'post_id' => $post_id,
+            ]
+        ]);
+
+        $this->view->post = $post;
     }
 
 }

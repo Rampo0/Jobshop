@@ -11,7 +11,7 @@ class PostMapper{
         foreach ($posts as $post)
         {
             $postId = new PostId($post->id);
-            $this->all_posts[$post->id] = new Post($postId, $post->description, $post->file);
+            $this->all_posts[$post->id] = new Post($postId, $post->description, $post->file, $post->user_id);
         }
 
         foreach ($ratings as $rating)

@@ -23,6 +23,7 @@ class Module implements ModuleDefinitionInterface
         $loader->registerNamespaces([
             'Fiverr\Modules\Frontend\Controllers' => __DIR__ . '/controllers/',
             'Fiverr\Modules\Frontend\Models' => __DIR__ . '/models/',
+            'Fiverr\Modules\Post\Models' => __DIR__ . '/../post/application/domain/models/',
         ]);
 
         $loader->register();

@@ -1,0 +1,19 @@
+<?php
+
+$post_img = $this->url->get('files/' . $post[0]->file);
+$post_desc = $post[0]->description;
+
+echo "  
+
+    <div class='card mb-3'>
+        <img class='card-img-top' style='height:300px;' src='$post_img' alt='Card image cap'>
+        <div class='card-body'>
+            <h5 class='card-title'>$post_desc</h5>
+            <p class='card-text'></p>
+            
+        </div>
+    </div>
+    
+    ";
+
+?>

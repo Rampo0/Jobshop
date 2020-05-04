@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1>Post !</h1>
+    <h1></h1>
 </div>
 
 
@@ -12,30 +12,39 @@ foreach ($posts as $post) {
     $post_desc = $post->description();
     $post_rate = $post->averageRating();
     $post_id = $post->id()->id();
+    $post_img = $this->url->get('files/' . $post->file());
 
-    echo "$post_desc <br> $post_rate <br>
-    
-    <form action='/post/index/rating' method='post'>
+    echo "  
 
-        <input type='radio' id='star1' name='rating' value=1>
-        <label for='star1'>1 Star</label><br>
-        <input type='radio' id='star2' name='rating' value=2>
-        <label for='star2'>2 Star</label><br>
-        <input type='radio' id='star3' name='rating' value=3>
-        <label for='star3'>3 Star</label><br>
-        <input type='radio' id='star4' name='rating' value=4>
-        <label for='star4'>4 Star</label><br>
-        <input type='radio' id='star5' name='rating' value=5>
-        <label for='star5'>5 Star</label><br>
+    <div class='card mb-3'>
+        <img class='card-img-top' style='height:300px;' src='$post_img' alt='Card image cap'>
+        <div class='card-body'>
+            <h5 class='card-title'><a href='/post/index/detail/$post_id'> $post_desc </a></h5>
+            <p class='card-text'></p>
+            <form style='display:flex' action='/post/index/rating' method='post'>
 
-        <input type='hidden' name='$tokenName'
-        value='$tokenValue'/>
+                <input type='radio' id='star1' name='rating' value=1>
+                <label for='star1'>1 Star</label><br>
+                <input type='radio' id='star2' name='rating' value=2>
+                <label for='star2'>2 Star</label><br>
+                <input type='radio' id='star3' name='rating' value=3>
+                <label for='star3'>3 Star</label><br>
+                <input type='radio' id='star4' name='rating' value=4>
+                <label for='star4'>4 Star</label><br>
+                <input type='radio' id='star5' name='rating' value=5>
+                <label for='star5'>5 Star</label><br>
 
-        <input type='hidden' name='post_id'
-        value='$post_id'/>
+                <input type='hidden' name='$tokenName'
+                value='$tokenValue'/>
 
-        <button type='submit'>submit</button>
-    </form> 
+                <input type='hidden' name='post_id'
+                value='$post_id'/>
+
+                <button class='btn btn-primary' type='submit'>Rate</button>
+            </form>
+            <p class='card-text'><small class='text-muted'>Rating : $post_rate</small></p>
+        </div>
+    </div>
     
     ";
 }
