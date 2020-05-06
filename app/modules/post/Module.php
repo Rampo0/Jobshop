@@ -33,6 +33,7 @@ class Module implements ModuleDefinitionInterface
             'Fiverr\Modules\Post\Repository' => __DIR__ . '/application/domain/repository/',
             'Fiverr\Modules\Post\Services' => __DIR__ . '/application/services/',
             'Fiverr\Modules\Post\InMemory' => __DIR__ . '/infrastructure/persistence/',
+            'Fiverr\Modules\Comment\Models' => __DIR__ . '/../comment/application/domain/models/',
         ]);
 
         $loader->register();

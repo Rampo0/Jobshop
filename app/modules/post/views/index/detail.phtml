@@ -34,3 +34,34 @@ echo "
     ";
 
 ?>
+
+
+<form action="/comment/index/create" method="post">
+
+    <textarea name="comment" id="comment" cols="50" rows="2" placeholder='Leave a comment'></textarea>
+
+    <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+        value='<?php echo $this->security->getToken() ?>'/>
+
+    <input type='hidden' name='post_id'
+                value="<?php echo $post[0]->id; ?>" />
+
+
+    <input class='btn btn-info' type="submit" value="comment">
+
+</form>
+
+<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <?php
+
+        foreach ($comments as $comment) {
+            echo "
+                <li class='list-group-item'>$comment->comment</li>
+            ";
+        }
+
+    ?>
+  </ul>
+</div>
+

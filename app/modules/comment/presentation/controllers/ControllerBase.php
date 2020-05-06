@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Fiverr\Modules\User\Controllers;
+namespace Fiverr\Modules\Comment\Controllers;
 
 use Phalcon\Mvc\Controller;
 

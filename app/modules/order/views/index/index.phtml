@@ -1,11 +1,24 @@
-<div class="page-header">
-    <h1>Orders</h1>
+<div class='card' style='margin-top : 20px;'>
+    <div class='card-header'>
+        Orders
+    </div>
+    <?php
+
+        foreach ($orders as $order) {
+
+        echo"
+            <div class='card-body'>
+                <h5 class='card-title'>$order->order_description</h5>
+                <p class='card-text'>Not done yet</p>
+                <a href='#' class='btn btn-primary'>Upload</a>
+            </div>
+        ";
+
+        }
+    ?>
+
+
 </div>
 
-<?php
 
-foreach ($orders as $order) {
-    echo "$order->order_description <br>";
-}
 
-?>

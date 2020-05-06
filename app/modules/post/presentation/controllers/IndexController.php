@@ -5,6 +5,8 @@ namespace Fiverr\Modules\Post\Controllers;
 
 use Fiverr\Modules\Post\Models\Posts;
 use Fiverr\Modules\Post\Models\Ratings;
+use Fiverr\Modules\Comment\Models\Comments;
+
 
 class IndexController extends ControllerBase
 {
@@ -70,6 +72,14 @@ class IndexController extends ControllerBase
             ]
         ]);
 
+        $comments = Comments::find([
+            'conditions' => 'post_id = :post_id:',
+            'bind'       => [
+                'post_id' => $post_id,
+            ]
+        ]);
+
+        $this->view->comments = $comments;
         $this->view->post = $post;
     }
 
