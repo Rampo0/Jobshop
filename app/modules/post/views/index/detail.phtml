@@ -2,6 +2,11 @@
 
 $post_img = $this->url->get('files/' . $post[0]->file);
 $post_desc = $post[0]->description;
+$post_id = $post[0]->id;
+
+$tokenName = $this->security->getTokenKey();
+$tokenValue = $this->security->getToken();
+
 
 echo "  
 
@@ -10,7 +15,19 @@ echo "
         <div class='card-body'>
             <h5 class='card-title'>$post_desc</h5>
             <p class='card-text'></p>
-            
+            <form action='/order/index/create' method='post'>
+
+                <textarea style='widht : 100%;' cols='100%' name='order_description' placeholder='description'></textarea>
+                
+                <input type='hidden' name='post_id'
+                    value='$post_id'/>
+
+                <input type='hidden' name='$tokenName'
+                    value='$tokenValue'/>
+                    <br>
+                <button class='btn btn-primary' type='submit'>order</button>
+
+            </form>
         </div>
     </div>
     
