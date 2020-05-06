@@ -4,13 +4,38 @@
     </div>
     <?php
 
+    $tokenName = $this->security->getTokenKey();
+    $tokenValue = $this->security->getToken();
+    
         foreach ($orders as $order) {
 
         echo"
             <div class='card-body'>
                 <h5 class='card-title'>$order->order_description</h5>
-                <p class='card-text'>Not done yet</p>
-                <a href='#' class='btn btn-primary'>Upload</a>
+                
+        ";
+
+            if ($order->is_done) {
+                echo "<p class='card-text'>file already uploaded.</p>";
+            }
+
+        echo "
+
+                
+                <form enctype='multipart/form-data' action='order/index/upload' method='post'>
+
+                    <input class='btn btn-warning' type='file' name='file' placeholder='upload'>
+
+                    <input type='hidden' name='$tokenName'
+                    value='$tokenValue'/>
+
+                    <input type='hidden' name='order_id'
+                    value=$order->id />
+
+                    <button class='btn btn-primary' type='submit'>Upload</button>
+
+                </form>
+
             </div>
         ";
 
